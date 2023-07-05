@@ -35,7 +35,7 @@ pipeline{
 		stage('5Deploy2UAT'){
 			steps{
 				sh "echo Ready to deploy for User Acceptance Testing Environment"
-				sh "scp -i tomcat.pem target/*.war ec2-user@18.234.209.168:/opt/tomcat9/webapps"
+				deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: '18.234.209.168:8100')], contextPath: null, war: 'target/*.war'
 				sh "echo Deployed to UAT environment. End-to-end deployment is complete with relative ease."
 			}
 		}
