@@ -6,33 +6,33 @@ pipeline{
 	//options{}
 	//triggers{}
 	stages{
-		stage(1. 'GetCode'){
+		stage('1GetCode'){
 			steps{
 				git "https://github.com/MrMohment/maven-web-application"
 			}	
 		}
-		stage(2. 'Build'){
+		stage('2Build'){
 			steps{
 				sh "echo Starting the build process"
 			    sh "mvn clean package" 
 			    sh "echo Build is now complete"
 			}
 		}
-		stage(3. 'CodeQuality'){
+		stage('3CodeQuality'){
 			steps{
 				sh "echo Now performing Code Quality Analysis"
 				sh "mvn sonar:sonar"
 				sh "echo Code Quality Analysis complete"
 			}
 		}
-		stage(4. 'UploadingArtifacts'){
+		stage('4UploadingArtifacts'){
 			steps{
 				sh "echo Uploading artifacts to Nexus Repo"
 				sh "mvn deploy"
 				sh "echo Upload complete"
 			}
 		}
-		stage(5. 'Deploy2UAT'){
+		stage('5Deploy2UAT'){
 			steps{
 				sh "echo Ready to deploy for User Acceptance Testing Environment"
 				sh "scp -i tomcat.pem target/*.war ec2-user@18.234.209.168:/opt/tomcat9/webapps"
@@ -40,5 +40,5 @@ pipeline{
 			}
 		}
 	}
-	post{}
+	//post{}
 }
