@@ -1,0 +1,44 @@
+pipeline{
+	agent any 
+	tools{
+		maven "3.9.2"
+	}
+	//options{}
+	//triggers{}
+	stages{
+		stage(1. 'GetCode'){
+			steps{
+				git "https://github.com/MrMohment/maven-web-application"
+			}	
+		}
+		stage(2. 'Build'){
+			steps{
+				sh "echo Starting the build process"
+			    sh "mvn clean package" 
+			    sh "echo Build is now complete"
+			}
+		}
+		stage(3. 'CodeQuality'){
+			steps{
+				sh "echo Now performing Code Quality Analysis"
+				sh "mvn sonar:sonar"
+				sh "echo Code Quality Analysis complete"
+			}
+		}
+		stage(4. 'UploadingArtifacts'){
+			steps{
+				sh "echo Uploading artifacts to Nexus Repo"
+				sh "mvn deploy"
+				sh "echo Upload complete"
+			}
+		}
+		stage(5. 'Deploy2UAT'){
+			steps{
+				sh "echo Ready to deploy for User Acceptance Testing Enviornment"
+				sh "scp -i tomcat.pem *.war ec2-user@"
+				sh "echo Deployed to UAT environment. End-to-end deployment is complete with relative ease."
+			}
+		}
+	}
+	post{}
+}
