@@ -1,4 +1,4 @@
-@Library('JenkinsSharedLibrary') _
+@Library('MohmentSharedLibrary') _
 
 pipeline{
   agent any
