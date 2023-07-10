@@ -24,11 +24,13 @@ pipeline{
         sh "mvn sonar:sonar"
       }
     }
+/*
     stage('4Upload'){
       steps{
         sh "echo Uploading"
         sh "mvn deploy"
       }
     }
+*/
   }
 }
