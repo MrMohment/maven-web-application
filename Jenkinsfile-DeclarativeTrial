@@ -1,0 +1,34 @@
+pipline{
+  agent any
+  tools{
+    maven "3.9.2"
+  }
+  //options{}
+  //triggers{}
+  stages{
+    stage(1.GetCode){
+      steps{
+        sh "echo Getting the code."
+        git "https://github.com/MrMohment/maven-web-application"
+      }
+    }
+    stage(2.Build){
+      steps{
+        sh "echo Performing the build"
+        sh "mvn clean package"
+      }
+    }
+    stage(3.Quality){
+      steps{
+        sh "echo Performing Code Quality"
+        sh "mvn sonar:sonar"
+      }
+    }
+    stage(4.Upload){
+      steps{
+        sh "echo Uploading"
+        sh "mvn deploy"
+      }
+    }
+  }
+}
