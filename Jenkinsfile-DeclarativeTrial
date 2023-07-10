@@ -1,4 +1,4 @@
-pipline{
+pipeline{
   agent any
   tools{
     maven "3.9.2"
@@ -9,7 +9,7 @@ pipline{
     stage(1.GetCode){
       steps{
         sh "echo Getting the code."
-        git "https://github.com/MrMohment/maven-web-application"
+        git 'https://github.com/MrMohment/maven-web-application'
       }
     }
     stage(2.Build){
