@@ -6,25 +6,25 @@ pipeline{
   //options{}
   //triggers{}
   stages{
-    stage(1.GetCode){
+    stage(1GetCode){
       steps{
         sh "echo Getting the code."
         git 'https://github.com/MrMohment/maven-web-application'
       }
     }
-    stage(2.Build){
+    stage(2Build){
       steps{
         sh "echo Performing the build"
         sh "mvn clean package"
       }
     }
-    stage(3.Quality){
+    stage(3Quality){
       steps{
         sh "echo Performing Code Quality"
         sh "mvn sonar:sonar"
       }
     }
-    stage(4.Upload){
+    stage(4Upload){
       steps{
         sh "echo Uploading"
         sh "mvn deploy"
