@@ -24,13 +24,11 @@ pipeline{
         stages("SonarQube Report")
       }
     }
-/*
     stage('4Upload'){
       steps{
         sh "echo Uploading"
         sh "mvn deploy"
       }
     }
-*/
   }
 }
