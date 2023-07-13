@@ -95,13 +95,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mohmentous Releases Nexus Repository</name>
-	      <url>http://44.203.145.88:8081/repository/Tesla-Releases/</url>
+	      <url>http://172.31.81.49:8081/repository/Tesla-Releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mohmentous Snapshot Nexus Repository </name>
-	      <url>http://44.203.145.88:8081/repository/Tesla-SNAPSHOTS/</url>
+	      <url>http://172.31.81.49:8081/repository/Tesla-SNAPSHOTS/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
