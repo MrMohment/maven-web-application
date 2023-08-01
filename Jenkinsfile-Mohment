@@ -1,7 +1,7 @@
 pipeline{
 	agent any 
 	tools{
-		maven "3.9.2"
+		maven "3.9.3"
 	}
 	//options{}
 	//triggers{}
@@ -13,11 +13,12 @@ pipeline{
 		}
 		stage('2Build'){
 			steps{
-				sh "echo Starting the build process"
+			    sh "echo Starting the build process"
 			    sh "mvn clean package" 
 			    sh "echo Build is now complete"
 			}
 		}
+/*
 		stage('3CodeQuality'){
 			steps{
 				sh "echo Now performing Code Quality Analysis"
@@ -25,6 +26,7 @@ pipeline{
 				sh "echo Code Quality Analysis complete"
 			}
 		}
+*/
 		stage('4UploadingArtifacts'){
 			steps{
 				sh "echo Uploading artifacts to Nexus Repo"
@@ -32,6 +34,7 @@ pipeline{
 				sh "echo Upload complete"
 			}
 		}
+/*
 		stage('5Deploy2UAT'){
 			steps{
 				sh "echo Ready to deploy for User Acceptance Testing Environment"
@@ -39,6 +42,7 @@ pipeline{
 				sh "echo Deployed to UAT environment. End-to-end deployment is complete with relative ease."
 			}
 		}
+*/
 	}
 	//post{}
 }
