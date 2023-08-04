@@ -1,9 +1,9 @@
-@Library('MohmentSharedLibrary') _
+@Library('MohmentousOccasions') _
 
 pipeline{
   agent any
   tools{
-    maven "3.9.2"
+    maven "3.9.3"
   }
   //options{}
   //triggers{}
